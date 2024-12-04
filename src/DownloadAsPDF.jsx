@@ -104,43 +104,14 @@ const DownloadAsPDF = () => {
               Agregar Producto
             </button>
           </div>
-
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="border p-2">Producto</th>
-                <th className="border p-2">Cantidad</th>
-                <th className="border p-2">Precio Unitario</th>
-                <th className="border p-2">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product, index) => (
-                <tr key={index}>
-                  <td className="border p-2">{product.name}</td>
-                  <td className="border p-2">{product.quantity}</td>
-                  <td className="border p-2">${product.price}</td>
-                  <td className="border p-2">
-                    ${product.totalPrice.toFixed(2)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {products.length > 0 && (
-            <div className="text-right font-bold">
-              Total General: ${calculateTotal().toFixed(2)}
-            </div>
-          )}
         </div>
       </div>
       <div
         ref={divRef}
         className="pdf  justify-center p-8 text-white flex flex-col items-center  "
       >
-        <div className="w-[85%] h-[85%] bg-white">
-          <header className="w-full h-[20%] bg-slate-400 flex justify-between p-8">
+        <div className="w-[85%] h-[85%] ">
+          <header className="w-full h-[20%]  flex justify-between p-8">
             <div className="flex flex-col">
               <img src="" alt="img" />
               <p>Nombre del cliente</p>
@@ -153,8 +124,41 @@ const DownloadAsPDF = () => {
               <p>Fecha</p>
             </div>
           </header>
-          <main className="w-full h-[80%] bg-slate-300">
-            <table></table>
+          <main className="w-full h-[80%] ">
+            <table className="w-full border-collapse relative">
+              <thead>
+                <tr className="bg-zinc-600/20">
+                  <th className="border p-2 w-[50%]">Producto</th>
+                  <th className="border p-2 w-[15%] text-center">Cantidad</th>
+                  <th className="border p-2 w-[15%] text-center">
+                    Precio Unitario
+                  </th>
+                  <th className="border p-2 w-[20%] text-center">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {products.map((product, index) => (
+                  <tr key={index}>
+                    <td className="border p-2 w-[50%]">{product.name}</td>
+                    <td className="border p-2 w-[15%] text-center">
+                      {product.quantity}
+                    </td>
+                    <td className="border p-2 w-[15%] text-center">
+                      ${product.price}
+                    </td>
+                    <td className="border p-2 w-[20%] text-center">
+                      ${product.totalPrice.toFixed(2)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            {products.length > 0 && (
+              <div className="text-right font-bold mt-8">
+                Total General <br /> ${calculateTotal().toFixed(2)}
+              </div>
+            )}
           </main>
         </div>
         <footer className="w-full h-[15%] relative ">
@@ -165,7 +169,7 @@ const DownloadAsPDF = () => {
               enterga.
             </p>
             <p className="text-center">
-              <span className="text-xl font-semibold">vijente hasta:</span>{" "}
+              <span className="text-xl font-semibold">vigente hasta:</span>{" "}
               <br /> 16/01/89
             </p>
           </div>
