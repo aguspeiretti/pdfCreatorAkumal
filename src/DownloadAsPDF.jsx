@@ -50,11 +50,11 @@ const DownloadAsPDF = () => {
   };
 
   return (
-    <div>
-      <div className="container mx-auto p-4">
+    <div className="flex">
+      <div className="container w-[500px] p-4 flex-col ">
         <h1 className="text-2xl font-bold mb-4"></h1>
-        <div className="grid gap-4">
-          <div className="grid grid-cols-2 gap-4">
+        <div className="">
+          <div className="flex flex-col">
             <input
               className="border p-2 rounded"
               placeholder="Nombre del Cliente"
@@ -70,7 +70,7 @@ const DownloadAsPDF = () => {
             />
           </div>
 
-          <div className="grid grid-cols-4 gap-2">
+          <div className="flex flex-col">
             <input
               className="border p-2 rounded"
               placeholder="Producto"
@@ -103,12 +103,17 @@ const DownloadAsPDF = () => {
             >
               Agregar Producto
             </button>
+            <button onClick={handleDownloadPDF} style={{ marginTop: "20px" }}>
+              Descargar como PDF
+            </button>
           </div>
         </div>
       </div>
       <div
         ref={divRef}
-        className="pdf  justify-center p-8 text-white flex flex-col items-center  "
+        className="pdf justify-center p-8 text-white flex flex-col items-center  justify-center
+        transform scale-[0.8] origin-top-left 
+        w-[200%] h-[200%]"
       >
         <div className="w-[85%] h-[85%] ">
           <header className="w-full h-[20%]  flex justify-between p-8">
@@ -176,9 +181,6 @@ const DownloadAsPDF = () => {
           <div className="w-full h-[40px] bg-violet-500 absolute bottom-0"></div>
         </footer>
       </div>
-      <button onClick={handleDownloadPDF} style={{ marginTop: "20px" }}>
-        Descargar como PDF
-      </button>
     </div>
   );
 };
