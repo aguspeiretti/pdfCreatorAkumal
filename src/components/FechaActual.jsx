@@ -1,5 +1,3 @@
-import React from "react";
-
 const FechaActual = () => {
   // Función para obtener el nombre del mes en español
   const obtenerMesEnEspañol = (mes) => {

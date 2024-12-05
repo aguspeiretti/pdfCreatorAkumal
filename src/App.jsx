@@ -1,11 +1,17 @@
 import "./App.css";
-import BudgetGenerator from "./BudgetGenerator";
-import DownloadAsPDF from "./DownloadAsPDF";
 
+import ListaDePrecios from "./components/ListaDePrecios";
+import Presupuesto from "./components/Presupuesto";
+import { BrowserRouter, Routes, Route } from "react-router";
 function App() {
   return (
     <>
-      <DownloadAsPDF />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ListaDePrecios />} />
+          <Route path="Presupuesto" element={<Presupuesto />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

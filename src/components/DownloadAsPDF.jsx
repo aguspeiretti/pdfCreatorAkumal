@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import "./style.css";
+import "../style.css";
 import FechaActual from "./FechaActual";
 import { HiOutlinePaperClip } from "react-icons/hi2";
 import { FaWhatsapp } from "react-icons/fa";
