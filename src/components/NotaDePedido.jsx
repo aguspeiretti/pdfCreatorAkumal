@@ -18,6 +18,7 @@ const NotaDePedido = () => {
   const [validityDate, setValidityDate] = useState("");
   const [products, setProducts] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
+  const [destinoPhone, setDestinoPhone] = useState("");
   const [newProduct, setNewProduct] = useState({
     name: "",
     quantity: "",
@@ -112,6 +113,40 @@ const NotaDePedido = () => {
     });
   };
   console.log(products.length);
+  const handleSendPDFToWhatsApp = async (destinoPhone) => {
+    const element = divRef.current;
+
+    const canvas = await html2canvas(element, { scale: 3 });
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("p", "mm", "a4", true);
+
+    const imgWidth = 210;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+
+    const pdfBlob = pdf.output("blob");
+    const pdfFile = new File([pdfBlob], "lista-precios.pdf", {
+      type: "application/pdf",
+    });
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Lista de Precios",
+          text: "Documento de lista de precios",
+          files: [pdfFile],
+        });
+      } catch (error) {
+        console.error("Error sharing:", error);
+      }
+    } else {
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${destinoPhone}&text=${encodeURIComponent(
+        "Lista de Precios"
+      )}`;
+      window.open(whatsappUrl, "_blank");
+    }
+  };
 
   return (
     <div className="flex">
@@ -212,6 +247,19 @@ const NotaDePedido = () => {
               className="bg-indigo-500 text-white p-2 rounded hover:bg-indigo-600"
             >
               Descargar como PDF
+            </button>
+            <input
+              type="tel"
+              placeholder="Número destino"
+              value={destinoPhone}
+              onChange={(e) => setDestinoPhone(e.target.value)}
+              className="border p-2 rounded mb-4 mt-8"
+            />
+            <button
+              onClick={() => handleSendPDFToWhatsApp(destinoPhone)}
+              className="bg-green-500 text-white p-2 rounded hover:bg-green-600"
+            >
+              Enviar PDF por whatsapp
             </button>
           </div>
         </div>
