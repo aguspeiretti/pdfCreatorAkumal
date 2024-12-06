@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
-import { Link, NavLink } from "react-router";
+import { Link } from "react-router-dom";
+
 const NavButton = () => {
   const [open, setOpen] = useState(false);
 
@@ -21,21 +22,21 @@ const NavButton = () => {
           open ? "left-0" : "left-[-500px]"
         } `}
       >
-        <NavLink to={"/"} className="w-[100%]">
+        <Link to={"/"} className="w-[100%]">
           <li className="text-white text-xl border-2 w-[90%] border-violet-600 list-none p-4 text-center rounded-lg mb-4 bg-violet-700">
             Lista de precios
           </li>
-        </NavLink>
-        <NavLink to={"Presupuesto"} className="w-[100%]">
+        </Link>
+        <Link to={"/Presupuesto"} className="w-[100%]">
           <li className="text-white text-xl border-2 w-[90%] border-violet-600 list-none p-4 text-center rounded-lg mb-4 bg-violet-700">
             Presupuesto
           </li>
-        </NavLink>
-        <NavLink to={"Nota-de-Pedido"} className="w-[100%]">
+        </Link>
+        <Link to={"/Nota-de-Pedido"} className="w-[100%]">
           <li className="text-white text-xl border-2 w-[90%] border-violet-600 list-none p-4 text-center rounded-lg mb-4 bg-violet-700">
             Nota de pedido
           </li>
-        </NavLink>
+        </Link>
       </div>
     </div>
   );
