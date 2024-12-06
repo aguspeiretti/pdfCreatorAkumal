@@ -31,11 +31,11 @@ const NavButton = () => {
             Presupuesto
           </li>
         </Link>
-        {/* <Link to={"Nota-de-Pedido"} className="w-[100%]">
+        <Link to={"Nota-de-Pedido"} className="w-[100%]">
           <li className="text-white text-xl border-2 w-[90%] border-violet-600 list-none p-4 text-center rounded-lg mb-4 bg-violet-700">
             Nota de pedido
           </li>
-        </Link> */}
+        </Link>
       </div>
     </div>
   );
