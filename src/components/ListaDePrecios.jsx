@@ -207,16 +207,10 @@ const ListaDePrecios = () => {
             >
               Descargar como PDF
             </button>
-            <input
-              type="tel"
-              placeholder="Número destino"
-              value={destinoPhone}
-              onChange={(e) => setDestinoPhone(e.target.value)}
-              className="border p-2 rounded mb-4 mt-8"
-            />
+
             <button
               onClick={() => handleSendPDFToWhatsApp(destinoPhone)}
-              className="bg-green-500 text-white p-2 rounded hover:bg-green-600"
+              className="bg-green-500 text-white p-2 rounded hover:bg-green-600 mt-8"
             >
               Enviar PDF por whatsapp
             </button>
