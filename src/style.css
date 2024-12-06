@@ -1,5 +1,16 @@
 .pdf {
   width: 794px;
+  height: 1123px;
+  background-image: url("/img1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.pdf2 {
+  width: 794px;
   height: auto;
   background-color: rgb(255, 255, 255);
   /* background-image: url("/img1.png");

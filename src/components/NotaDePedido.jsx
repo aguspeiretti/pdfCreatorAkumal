@@ -218,7 +218,7 @@ const NotaDePedido = () => {
       </div>
       <div
         ref={divRef}
-        className="pdf  justify-center px-4 text-white flex flex-col items-center "
+        className="pdf2  justify-center px-4 text-white flex flex-col items-center "
       >
         <div className="w-full h-auto relative flex justify-center">
           <div className="w-[90%] h-fit min-h-[297mm] ">
