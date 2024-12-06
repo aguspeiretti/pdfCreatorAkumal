@@ -145,7 +145,7 @@ const Presupuesto = () => {
               Nombre del cliente
             </label>
             <input
-              className="border p-2 rounded mb-4"
+              className="border p-2 rounded-full px-2 mb-4"
               placeholder="Nombre del Cliente"
               value={clientName}
               onChange={(e) => setClientName(e.target.value)}
@@ -155,7 +155,7 @@ const Presupuesto = () => {
             </label>
             <input
               type="date"
-              className="border p-2 rounded "
+              className="border p-2 rounded-full px-2 "
               value={validityDate}
               onChange={(e) => setValidityDate(e.target.value)}
             />
@@ -166,7 +166,7 @@ const Presupuesto = () => {
               {editingIndex !== null ? "Editar producto" : "Agregar productos"}
             </label>
             <input
-              className="border p-2 rounded"
+              className="border p-2 rounded-full px-2 mt-2 mb-2"
               placeholder="Producto"
               value={newProduct.name}
               onChange={(e) =>
@@ -175,7 +175,7 @@ const Presupuesto = () => {
             />
             <input
               type="number"
-              className="border p-2 rounded"
+              className="border p-2 rounded-full px-2 mb-2"
               placeholder="Cantidad"
               value={newProduct.quantity}
               onChange={(e) =>
@@ -184,7 +184,7 @@ const Presupuesto = () => {
             />
             <input
               type="number"
-              className="border p-2 rounded mb-4"
+              className="border p-2 rounded-full px-2 mb-4"
               placeholder="Precio"
               value={newProduct.price}
               onChange={(e) =>
@@ -194,38 +194,36 @@ const Presupuesto = () => {
             <div className="flex gap-2">
               <button
                 onClick={addProduct}
-                className="bg-violet-500 text-white p-2 rounded hover:bg-violet-600 mb-8 flex-grow"
+                className="bg-violet-500 text-white p-2 rounded-full px-2 hover:bg-violet-600 mb-8 flex-grow"
               >
                 {editingIndex !== null ? "Guardar Cambios" : "Agregar Producto"}
               </button>
               {editingIndex !== null && (
                 <button
                   onClick={cancelEdit}
-                  className="bg-red-500 text-white p-2 rounded hover:bg-red-600 mb-8"
+                  className="bg-red-500 text-white p-2 rounded-full px-2 hover:bg-red-600 mb-8"
                 >
                   Cancelar
                 </button>
               )}
             </div>
-            <button
-              onClick={handleDownloadPDF}
-              className="bg-indigo-500 text-white p-2 rounded hover:bg-indigo-600"
-            >
-              Descargar como PDF
-            </button>
-            <input
-              type="tel"
-              placeholder="Número destino"
-              value={destinoPhone}
-              onChange={(e) => setDestinoPhone(e.target.value)}
-              className="border p-2 rounded mb-4 mt-8"
-            />
-            <button
-              onClick={() => handleSendPDFToWhatsApp(destinoPhone)}
-              className="bg-green-500 text-white p-2 rounded hover:bg-green-600"
-            >
-              Enviar PDF por whatsapp
-            </button>
+            <div className="flex justify-evenly">
+              <button
+                onClick={handleDownloadPDF}
+                style={{ marginTop: "20px" }}
+                className="bg-indigo-500 text-white p-2 rounded-full px-2 hover:bg-indigo-600 w-[40%]"
+              >
+                Descargar como PDF
+              </button>
+
+              <button
+                onClick={() => handleSendPDFToWhatsApp(destinoPhone)}
+                style={{ marginTop: "20px" }}
+                className="bg-green-500 text-white p-2 rounded-full px-2 hover:bg-green-600  w-[40%]"
+              >
+                Enviar por whatsapp
+              </button>
+            </div>
           </div>
         </div>
       </div>

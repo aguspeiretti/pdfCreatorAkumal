@@ -138,7 +138,7 @@ const ListaDePrecios = () => {
               Nombre del cliente
             </label>
             <input
-              className="border p-2 rounded mb-4"
+              className="border p-2 rounded-full  px-4 mb-4"
               placeholder="Nombre del Cliente"
               value={clientName}
               onChange={(e) => setClientName(e.target.value)}
@@ -148,7 +148,7 @@ const ListaDePrecios = () => {
             </label>
             <input
               type="date"
-              className="border p-2 rounded "
+              className="border p-2 rounded-full px-4  "
               value={validityDate}
               onChange={(e) => setValidityDate(e.target.value)}
             />
@@ -159,7 +159,7 @@ const ListaDePrecios = () => {
               {editingIndex !== null ? "Editar producto" : "Agregar productos"}
             </label>
             <input
-              className="border p-2 rounded"
+              className="border p-2 rounded-full px-4  mb-2 mt-2"
               placeholder="Producto"
               value={newProduct.name}
               onChange={(e) =>
@@ -168,7 +168,7 @@ const ListaDePrecios = () => {
             />
             <input
               type="text"
-              className="border p-2 rounded"
+              className="border p-2 rounded-full px-4  mb-2 "
               placeholder="Talles"
               value={newProduct.talle}
               onChange={(e) =>
@@ -177,7 +177,7 @@ const ListaDePrecios = () => {
             />
             <input
               type="number"
-              className="border p-2 rounded mb-4"
+              className="border p-2 rounded-full  px-4 mb-4"
               placeholder="Precio"
               value={newProduct.price}
               onChange={(e) =>
@@ -187,33 +187,36 @@ const ListaDePrecios = () => {
             <div className="flex gap-2">
               <button
                 onClick={addProduct}
-                className="bg-violet-500 text-white p-2 rounded hover:bg-violet-600 mb-8 flex-grow"
+                className="bg-violet-500  text-white p-2 rounded-full hover:bg-violet-600 mb-8 flex-grow"
               >
                 {editingIndex !== null ? "Guardar Cambios" : "Agregar Producto"}
               </button>
               {editingIndex !== null && (
                 <button
                   onClick={cancelEdit}
-                  className="bg-red-500 text-white p-2 rounded hover:bg-red-600 mb-8"
+                  className="bg-red-500 text-white p-2 rounded-full hover:bg-red-600 mb-8 "
                 >
                   Cancelar
                 </button>
               )}
             </div>
-            <button
-              onClick={handleDownloadPDF}
-              style={{ marginTop: "20px" }}
-              className="bg-indigo-500 text-white p-2 rounded hover:bg-indigo-600"
-            >
-              Descargar como PDF
-            </button>
+            <div className="flex justify-evenly">
+              <button
+                onClick={handleDownloadPDF}
+                style={{ marginTop: "20px" }}
+                className="bg-indigo-500 text-white p-2 rounded-full hover:bg-indigo-600 w-[40%]"
+              >
+                Descargar como PDF
+              </button>
 
-            <button
-              onClick={() => handleSendPDFToWhatsApp(destinoPhone)}
-              className="bg-green-500 text-white p-2 rounded hover:bg-green-600 mt-8"
-            >
-              Enviar PDF por whatsapp
-            </button>
+              <button
+                onClick={() => handleSendPDFToWhatsApp(destinoPhone)}
+                style={{ marginTop: "20px" }}
+                className="bg-green-500 text-white p-2 rounded-full hover:bg-green-600  w-[40%]"
+              >
+                Enviar por whatsapp
+              </button>
+            </div>
           </div>
         </div>
       </div>
