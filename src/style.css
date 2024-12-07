@@ -11,7 +11,18 @@
 
 .pdf2 {
   width: 794px;
-  height: auto;
+  height: 1123px;
+  background-color: rgb(255, 255, 255);
+  /* background-image: url("/img1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+  color: black;
+  margin: 0 auto;
+}
+.fondoblanco {
+  width: 794px;
+  height: 1123px;
   background-color: rgb(255, 255, 255);
   /* background-image: url("/img1.png");
   background-size: cover;

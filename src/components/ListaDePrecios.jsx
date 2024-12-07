@@ -16,11 +16,13 @@ const ListaDePrecios = () => {
   const [products, setProducts] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
   const [destinoPhone, setDestinoPhone] = useState("");
+  const [manejarFondo, setManejarFondo] = useState(false);
   const [newProduct, setNewProduct] = useState({
     name: "",
     talle: "",
     price: "",
   });
+  console.log(manejarFondo);
 
   const addProduct = () => {
     if (newProduct.name && newProduct.talle && newProduct.price) {
@@ -124,6 +126,10 @@ const ListaDePrecios = () => {
       window.open(whatsappUrl, "_blank");
     }
   };
+  const manejarCambioCheckbox = (e) => {
+    // Actualizamos el estado según si el checkbox está marcado o no
+    setManejarFondo(e.target.checked);
+  };
 
   return (
     <div className="flex">
@@ -152,6 +158,17 @@ const ListaDePrecios = () => {
               value={validityDate}
               onChange={(e) => setValidityDate(e.target.value)}
             />
+            <label htmlFor="" className="text-white mt-2">
+              Fondo blanco?
+            </label>
+            <div>
+              <input
+                type="checkbox"
+                className=" "
+                value={manejarFondo}
+                onChange={manejarCambioCheckbox}
+              />
+            </div>
           </div>
 
           <div className="flex flex-col mt-4">
@@ -222,10 +239,20 @@ const ListaDePrecios = () => {
       </div>
       <div
         ref={divRef}
-        className="pdf justify-center px-4 text-white flex flex-col items-center"
+        className={`${
+          manejarFondo === false
+            ? "pdf justify-center px-4 text-white flex flex-col items-center"
+            : "fondoblanco justify-center px-4 text-white flex flex-col items-center"
+        }`}
       >
         <div className="w-full h-full relative flex justify-center">
-          <div className="w-full h-[40px] bg-violet-500 absolute bottom-0 flex justify-evenly items-center">
+          <div
+            className={`${
+              manejarFondo === true
+                ? "hidden "
+                : "w-full h-[40px] bg-violet-500 absolute bottom-0 flex justify-evenly items-center"
+            }`}
+          >
             <div className="flex items-center gap-2">
               <FaInstagram size={22} /> <p>Akumaluniformes</p>
             </div>
@@ -307,7 +334,13 @@ const ListaDePrecios = () => {
               </table>
             </main>
             <footer className="w-full h-[15%] flex relative">
-              <div className="flex w-full  mt-4 items-center">
+              <div
+                className={`${
+                  manejarFondo === true
+                    ? "hidden "
+                    : "flex w-full  mt-4 items-center"
+                }`}
+              >
                 <p className="text-base w-full text-center">
                   <span className="text-base font-semibold mr-2 ">
                     Forma de pago:
